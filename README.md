@@ -4,7 +4,25 @@ An identity and access management service using [Elixir](https://elixir-lang.org
 
 ![](./docs/images/scott-webb-unsplash.jpg)
 
-## Getting Started
+## Docker Quick Start
+
+If you just want to try this out, the easiest way is using Docker.
+
+1. Create a `.env` file with a long secret, this will be used to sign the session cookies:
+
+   `echo "SECRET_KEY_BASE=$(openssl rand -hex 32)" > .env`
+
+1. Start the various Docker containers:
+
+   `docker-compose up`
+
+1. In another terminal window, migrate the database:
+
+   `docker-compose run web eval Turret.Release.migrate`
+
+1. Now open [https://localhost:4000/](https://localhost:4000/) in your browser.
+
+## Development
 
 To start the application for development purposes:
 

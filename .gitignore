@@ -38,3 +38,6 @@ npm-debug.log
 
 # Ignore VS Code Elixir extension files
 /.elixir_ls
+
+# Ignore Docker Compose .env file
+.env

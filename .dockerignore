@@ -1,0 +1,9 @@
+_build
+.elixir_ls
+.github
+assets/node_modules
+deps
+docs
+priv/cert
+priv/static
+test

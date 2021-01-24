@@ -1,0 +1,7 @@
+:4000
+
+tls /root/certs/selfsigned.pem /root/certs/selfsigned_key.pem
+
+reverse_proxy web:4000 {
+    header_up X-Forwarded-Proto https
+}

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # Configure your database
 config :turret, Turret.Repo,
@@ -16,7 +16,6 @@ config :turret, Turret.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :turret, TurretWeb.Endpoint,
-  url: [host: "turret.localhost"],
   https: [
     port: 4000,
     cipher_suite: :strong,

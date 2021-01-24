@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
@@ -11,7 +11,13 @@ use Mix.Config
 # before starting your production server.
 config :turret, TurretWeb.Endpoint,
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  force_ssl: [
+    hsts: true,
+    rewrite_on: [:x_forwarded_proto],
+    subdomains: true,
+    host: nil
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -49,7 +55,3 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"
