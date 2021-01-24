@@ -1,0 +1,84 @@
+name: Continuous Integration
+
+on: push
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    env:
+      MIX_ENV: "test"
+
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: turret_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 2s
+          --health-timeout 2s
+          --health-retries 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Elixir
+        uses: actions/setup-elixir@v1
+        with:
+          elixir-version: 1.11.3
+          otp-version: 23.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Cache mix dependencies and _build directory
+        id: cache-mix-dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+
+      - name: Install mix dependencies
+        if: steps.cache-mix-dependencies.outputs.cache-hit != 'true'
+        run: mix deps.get
+
+      - name: Cache npm dependencies
+        id: cache-npm-dependencies
+        uses: actions/cache@v2
+        with:
+          path: assets/node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/assets/yarn.lock') }}
+
+      - name: Install npm dependencies
+        if: steps.cache-npm-dependencies.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+        working-directory: ./assets
+
+      - name: Build static assets
+        run: yarn deploy
+        working-directory: ./assets
+
+      - name: Compile
+        run: mix compile
+
+      - name: Run Elixir tests
+        run: mix test
+
+  docker:
+    name: Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build the Docker image
+        run: docker build -t turret:latest .
