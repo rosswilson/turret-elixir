@@ -1,0 +1,10 @@
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+
+# Mark the translations file as having been generated.
+priv/gettext/errors.pot linguist-generated
+
+# Mark the yarn lockfile as having been generated.
+assets/yarn.lock linguist-generated
+
+# Mark any vendored files as having been vendored.
+assets/vendor/* linguist-vendored
