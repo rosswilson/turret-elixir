@@ -10,9 +10,17 @@ An identity and access management service using [Elixir](https://elixir-lang.org
 
 If you just want to try this out, the easiest way is using Docker.
 
+1. Clone this repo:
+
+   `git clone git@github.com:rosswilson/turret-elixir.git && cd turret-elixir`
+
 1. Create a `.env` file with a long secret, this will be used to sign the session cookies:
 
    `echo "SECRET_KEY_BASE=$(openssl rand -hex 32)" > .env`
+
+1. Generate a certificate to support HTTPS:
+
+   `mkcert -cert-file priv/cert/selfsigned.pem --key-file priv/cert/selfsigned_key.pem localhost`
 
 1. Start the various Docker containers:
 
