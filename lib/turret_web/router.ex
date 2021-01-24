@@ -56,6 +56,8 @@ defmodule TurretWeb.Router do
 
     get "/users/settings/password", UserPasswordSettingsController, :edit
     put "/users/settings/password", UserPasswordSettingsController, :update
+
+    get "/users/settings/sessions", UserSessionSettingsController, :index
   end
 
   scope "/", TurretWeb do

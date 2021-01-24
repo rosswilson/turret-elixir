@@ -1,0 +1,18 @@
+<h1>Sessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Session</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for session_token <- @session_tokens do %>
+    <tr>
+      <td><%= session_token.id %></td>
+      <td><%= session_token.inserted_at %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -14,6 +14,7 @@ defmodule Turret.Accounts.UserToken do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
+
   schema "users_tokens" do
     field :token, :binary
     field :context, :string

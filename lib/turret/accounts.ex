@@ -238,6 +238,20 @@ defmodule Turret.Accounts do
     :ok
   end
 
+  @doc """
+  Returns a list of user tokens for the given user.
+
+  ## Examples
+
+      iex> get_session_tokens_by_user(user)
+      [%Turret.Accounts.UserToken{}]
+
+  """
+  def get_session_tokens_by_user(%User{} = user) do
+    UserToken.user_and_contexts_query(user, ["session"])
+    |> Repo.all()
+  end
+
   ## Confirmation
 
   @doc """
