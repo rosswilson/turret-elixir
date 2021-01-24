@@ -1,5 +1,7 @@
 # Turret
 
+![Continuous Integration](https://github.com/rosswilson/turret-elixir/workflows/Continuous%20Integration/badge.svg)
+
 An identity and access management service using [Elixir](https://elixir-lang.org/) and [Phoenix Framework](https://www.phoenixframework.org/).
 
 ![](./docs/images/scott-webb-unsplash.jpg)
