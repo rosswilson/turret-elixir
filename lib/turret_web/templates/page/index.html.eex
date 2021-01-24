@@ -1,2 +1,3 @@
 <h1>Turret</h1>
 <p>An identity and access management service, using <a href="https://elixir-lang.org/">Elixir</a> and <a href="https://www.phoenixframework.org/">Phoenix Framework</a>.</p>
+<p>Use the top menu to register, log in, and manage your settings.</p>

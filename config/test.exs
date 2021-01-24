@@ -1,5 +1,8 @@
 import Config
 
+# Speed up the password hashing algorithm when running tests
+config :bcrypt_elixir, :log_rounds, 1
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
