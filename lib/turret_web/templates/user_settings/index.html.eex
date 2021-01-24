@@ -1,0 +1,6 @@
+<h1>Settings</h1>
+
+<ul>
+  <li><%= link "Change email", to: Routes.user_email_settings_path(@conn, :edit) %></li>
+  <li><%= link "Change password", to: Routes.user_password_settings_path(@conn, :edit) %></li>
+</ul>
