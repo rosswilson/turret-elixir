@@ -32,7 +32,7 @@ To start the application for development purposes:
 - Install Node.js dependencies with `yarn install` inside the `assets` directory
 - Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`https://turret.localhost:4000`](https://turret.localhost:4000) from your browser.
+Now you can visit [`https://localhost:4000`](https://localhost:4000) from your browser.
 
 ## Architecture
 
