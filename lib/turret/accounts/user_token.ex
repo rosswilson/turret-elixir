@@ -139,4 +139,12 @@ defmodule Turret.Accounts.UserToken do
   def user_and_contexts_query(user, [_ | _] = contexts) do
     from t in Turret.Accounts.UserToken, where: t.user_id == ^user.id and t.context in ^contexts
   end
+
+  @doc """
+  Gets a specific token for the given user and context
+  """
+  def id_user_and_contexts_query(id, user, context) do
+    from t in Turret.Accounts.UserToken,
+      where: t.id == ^id and t.user_id == ^user.id and t.context == ^context
+  end
 end

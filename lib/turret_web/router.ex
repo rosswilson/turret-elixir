@@ -58,6 +58,7 @@ defmodule TurretWeb.Router do
     put "/users/settings/password", UserPasswordSettingsController, :update
 
     get "/users/settings/sessions", UserSessionSettingsController, :index
+    delete "/users/settings/sessions/:session_id", UserSessionSettingsController, :delete
   end
 
   scope "/", TurretWeb do

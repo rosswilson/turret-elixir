@@ -252,6 +252,11 @@ defmodule Turret.Accounts do
     |> Repo.all()
   end
 
+  def get_session_token_by_id_and_user(%User{} = user, id) do
+    query = UserToken.id_user_and_contexts_query(id, user, "session")
+    Repo.one(query)
+  end
+
   ## Confirmation
 
   @doc """

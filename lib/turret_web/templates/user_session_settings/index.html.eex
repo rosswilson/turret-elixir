@@ -5,6 +5,8 @@
     <tr>
       <th>Session</th>
       <th>Created At</th>
+
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +14,9 @@
     <tr>
       <td><%= session_token.id %></td>
       <td><%= session_token.inserted_at %></td>
+      <td>
+        <span><%= link "Revoke", to: Routes.user_session_settings_path(@conn, :delete, session_token), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
     </tr>
 <% end %>
   </tbody>
